@@ -14,7 +14,7 @@ class ConfigCron extends BaseCommand
     public function run(array $params)
     {
         $sourcePath = ROOTPATH . 'vendor/esoftdream/cron/src/Config/CronLimits.php'; // Sesuaikan dengan lokasi file asli
-        $targetPath = APPPATH . 'Config/CronLimites.php';
+        $targetPath = APPPATH . 'Config/CronLimits.php';
 
         if (! is_file($sourcePath)) {
             CLI::error("Source file not found: $sourcePath");
