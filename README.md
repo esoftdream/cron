@@ -9,7 +9,7 @@
     public function index()
     {
         $cronName = 'url-cron'; // nama url cron atau lainnya
-        $log      = new CronLogger($cronName, __METHOD__);
+        $log      = new \Esoftdream\Cron\Libraries\CronLogger($cronName, __METHOD__);
 
         if (! $log->start()) {
             echo 'Cron ' . $cronName . " mencapai batas eksekusi, skip...\n";
