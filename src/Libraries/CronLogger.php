@@ -22,6 +22,11 @@ class CronLogger
         $this->dailyLimits = config('CronLimits')->limits ?? [];
     }
 
+    /**
+     * Periksa apakah cron sudah mencapai batas eksekusi harian/weekly/monthly.
+     *
+     * @return bool true jika cron sudah mencapai batas, false jika belum
+     */
     public function hasReachedLimit(): bool
     {
         $config = $this->dailyLimits[$this->jobName] ?? ['limit' => 1, 'period' => 'daily'];
@@ -60,6 +65,11 @@ class CronLogger
         return $count >= $limit;
     }
 
+    /**
+     * Memulai cron dengan menyimpan log di database.
+     *
+     * @return bool true jika berhasil memulai cron, false jika sudah mencapai batas eksekusi
+     */
     public function start(): bool
     {
         if ($this->hasReachedLimit()) {
@@ -79,6 +89,11 @@ class CronLogger
         return true;
     }
 
+    /**
+     * Menyimpan log akhir cron di database.
+     *
+     * @param string|null $output output dari command, jika ada
+     */
     public function end(?string $output = null): void
     {
         $duration = microtime(true) - $this->startTime;
@@ -91,6 +106,11 @@ class CronLogger
         ]);
     }
 
+    /**
+     * Menyimpan log akhir cron di database dengan status error.
+     *
+     * @param string $errorMessage pesan error yang terjadi
+     */
     public function fail(string $errorMessage): void
     {
         $this->model->update($this->logId, [
