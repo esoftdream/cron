@@ -2,6 +2,7 @@
 
 namespace Esoftdream\Cron\Libraries;
 
+use CodeIgniter\Database\BaseConnection;
 use Esoftdream\Cron\Models\LogCronModel;
 
 class CronLogger
@@ -13,11 +14,11 @@ class CronLogger
     protected string $command;
     protected array $dailyLimits;
 
-    public function __construct(string $jobName, string $command)
+    public function __construct(?BaseConnection $db = null, string $jobName, string $command)
     {
         $this->jobName     = $jobName;
         $this->command     = $command;
-        $this->model       = new LogCronModel();
+        $this->model       = new LogCronModel($db);
         $this->dailyLimits = config('CronLimits')->limits ?? [];
     }
 
