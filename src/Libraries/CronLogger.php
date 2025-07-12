@@ -14,7 +14,7 @@ class CronLogger
     protected string $command;
     protected array $dailyLimits;
 
-    public function __construct(?BaseConnection $db = null, string $jobName, string $command)
+    public function __construct(string $jobName, string $command, ?BaseConnection $db = null)
     {
         $this->jobName     = $jobName;
         $this->command     = $command;
