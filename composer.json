@@ -1,6 +1,6 @@
 {
     "name": "esoftdream/cron",
-    "description": "Plugin Cron",
+    "description": "Cron Logging and Limiting library",
     "type": "library",
     "license": "proprietary",
     "authors": [
