@@ -1,6 +1,6 @@
 <?php
 
-namespace Esoftdream\Atc\Commands;
+namespace Esoftdream\Cron\Commands;
 
 use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\CLI\CLI;
@@ -9,7 +9,7 @@ class ConfigCron extends BaseCommand
 {
     protected $group       = 'Cron';
     protected $name        = 'cron:publish';
-    protected $description = 'Publishes the ATC config files';
+    protected $description = 'Publishes the Cron config files';
 
     public function run(array $params)
     {
